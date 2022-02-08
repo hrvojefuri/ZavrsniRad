@@ -1,0 +1,11 @@
+# omogućavanje URL rewrite-a
+RewriteEngine On
+
+# preskakanje datoteke ukoliko postoji
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# preskakanje direktorija ukoliko postoji
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# preusmjeravanje svih zahtjeva na index.php
+RewriteRule (.*) index.php [L,E=PATH_INFO:/$1]

@@ -8,6 +8,43 @@ class App
         // print_r($_SERVER);
         // echo '</pre>';
         $ruta = Request::getRuta();
-        echo $ruta;
+        // echo $ruta;
+
+        $dijelovi = explode('/',$ruta);
+
+        // echo '<pre>';
+        // print_r($dijelovi);
+        // echo '</pre>';
+
+        $klasa = '';
+        if(!isset($dijelovi[1]) || $dijelovi[1]===''){
+            $klasa = 'Index';
+        }else{
+            $klasa = ucfirst($dijelovi[1]);
+        }
+        $klasa .= 'Controller';
+        // echo $klasa;
+
+        $metoda = '';
+        if(!isset($dijelovi[2]) || $dijelovi[2]===''){
+            $metoda = 'index';
+        }else{
+            $metoda = $dijelovi[2];
+        }
+        
+        // echo $klasa . '->' . $metoda . '()';
+
+        if(class_exists($klasa) && method_exists($klasa,$metoda)){
+            // klasa i metoda postoje, instancirati klasu i pozvati metodu
+            $instanca = new $klasa();
+            $instanca->$metoda();
+        }else{
+            // metoda na klasi ne postoji, obavijestiti korisnika
+            echo $klasa . '->' . $metoda . '() ne postoji';
+        }
+
+        //$kontroler = new IndexController();
+        //$kontroler->index();
+
     }
 }

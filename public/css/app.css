@@ -8,3 +8,7 @@
 #program{
     min-height: 400px;
 }
+
+hr{
+    max-width: 100%;
+}

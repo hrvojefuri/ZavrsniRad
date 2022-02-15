@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'url'=>'http://furiousvortex.xyz/'
+    'url'=>'http://furiousvortex.xyz/',
+    'naslovApp'=>'FuriousVortex'
 ];

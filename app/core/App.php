@@ -40,7 +40,11 @@ class App
             $instanca->$metoda();
         }else{
             // metoda na klasi ne postoji, obavijestiti korisnika
-            echo $klasa . '->' . $metoda . '() ne postoji';
+            $view = new View();
+            $view->render('error404',[
+                'onoceganema'=>$klasa . '->' . $metoda
+            ]);
+            // echo $klasa . '->' . $metoda . '() ne postoji';
         }
 
         //$kontroler = new IndexController();

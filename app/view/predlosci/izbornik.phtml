@@ -8,16 +8,19 @@
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text"><?=App::config('naslovApp')?></li>
       <li><a href="<?=App::config('url')?>">Početna</a></li>
-      <li class="has-submenu">
-        <a href="#0">XXXX</a>
-        <ul class="submenu menu vertical" data-submenu>
-          <li><a href="#0">One</a></li>
-          <li><a href="#0">Two</a></li>
-          <li><a href="#0">Three</a></li>
-        </ul>
-      </li>
-      
-      <li><a href="#0">Three</a></li>
+      <?php if(App::autoriziran()): ?>
+        <li><a href="<?=App::config('url')?>nadzornaploca/index">Nadzorna ploča</a></li>
+      <?php endif; ?>
+      <?php if(App::autoriziran()): ?>
+        <li><a href="#">Programi</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="<?=App::config('url')?>kupac/index">Kupac</a></li>
+            <li><a href="<?=App::config('url')?>proizvod/index">Proizvod</a></li>
+            <li><a href="<?=App::config('url')?>narudzba/index">Narudžba</a></li>
+            <li><a href="<?=App::config('url')?>kosarica/index">Košarica</a></li>
+          </ul>
+        </li>
+      <?php endif; ?>  
     </ul>
   </div>
   <div class="top-bar-right">

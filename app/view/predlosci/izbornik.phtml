@@ -24,7 +24,7 @@
     <ul class="menu">
       <li>
         <?php if(App::autoriziran()): ?>
-          <a href="<?=App::config('url')?>login/odjava">Odjava</a>
+          <a href="<?=App::config('url')?>login/odjava">Odjava <?php echo $_SESSION['autoriziran']->ime ?></a>
         <?php else: ?>
           <a href="<?=App::config('url')?>login/index">Prijava</a>
         <?php endif; ?>

@@ -119,19 +119,19 @@ insert into kupac (sifra,ime,prezime,ulica,kucniBroj,grad,postanskiBroj,email) v
 # inserti u tablicu narudzba
 
 insert into narudzba (sifra,kupac,iznos,datumNarudzbe,nacinPlacanja,dostavnaSluzba,datumDostave,isporuceno) values
-(null,1,449.97,'2021-11-03','Pouzeće','Overseas Express','2021-11-08',1),
-(null,2,299.98,'2021-11-25','Visa Classic','GLS','2021-11-29',0),
-(null,3,149.99,'2021-11-15','Diners','HP Express','2021-11-16',1);
+(null,1,509.97,'2021-11-03','Pouzeće','Overseas Express','2021-11-08',1),
+(null,2,289.98,'2021-11-25','Visa Classic','GLS','2021-11-29',0),
+(null,3,129.99,'2021-11-15','Diners','HP Express','2021-11-16',1);
 
 # inserti u tablicu kosarica
 
 insert into kosarica (sifra,narudzba,proizvod,kolicina,cijena) values
 # kupac 1
-(null,1,3,1,149.99),
-(null,1,5,1,149.99),
-(null,1,7,1,149.99),
+(null,1,3,1,189.99),
+(null,1,5,1,139.99),
+(null,1,7,1,179.99),
 # kupac 2
-(null,2,22,1,149.99),
-(null,2,30,1,149.99),
+(null,2,22,1,159.99),
+(null,2,30,1,129.99),
 # kupac 3
-(null,3,9,1,149.99);
+(null,3,9,1,129.99);

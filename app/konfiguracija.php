@@ -3,7 +3,13 @@
 return [
     'dev'=>true,
     'url'=>'http://furiousvortex.xyz/',
-    'naslovApp'=>'FuriousVortex'
+    'naslovApp'=>'FuriousVortex',
+    'baza'=>[
+        'server'=>'localhost',
+        'baza'=>'furiousvortex',
+        'korisnik'=>'edunova',
+        'lozinka'=>'edunova'
+    ]
 ];
 
 /*

@@ -57,4 +57,13 @@ class App
         $config = include BP_APP . 'konfiguracija.php';
         return $config[$kljuc];
     }
+
+    public static function autoriziran()
+    {
+        if(isset($_SESSION) && isset($_SESSION['autoriziran'])){
+            return true;
+        }
+
+        return false;
+    }
 }

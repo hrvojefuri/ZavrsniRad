@@ -47,32 +47,19 @@ create table kosarica (
 
 create table proizvod (
     sifra           int not null primary key auto_increment,
-    zanr            int not null,
-    izvodac         int not null,
+    zanr            varchar(50) not null,
+    izvodac         varchar(50) not null,
     naziv           varchar(50) not null,
     cijena          decimal(18,2) not null,
     izdavackaKuca   varchar(50) not null,
     zaliha          int not null
 );
 
-create table izvodac (
-    sifra   int not null primary key auto_increment,
-    naziv   varchar(50) not null,
-    web     varchar(255)
-);
-
-create table zanr (
-    sifra   int not null primary key auto_increment,
-    naziv   varchar(50) not null
-);
 
 alter table narudzba add foreign key (kupac) references kupac(sifra);
 
 alter table kosarica add foreign key (narudzba) references narudzba(sifra);
 alter table kosarica add foreign key (proizvod) references proizvod(sifra);
-
-alter table proizvod add foreign key (zanr) references zanr(sifra);
-alter table proizvod add foreign key (izvodac) references izvodac(sifra);
 
 
 # inserti u tablicu operater 17_02_2022
@@ -84,74 +71,43 @@ insert into operater(email,lozinka,ime,prezime,uloga) values
 ('oper@edunova.hr','$2a$12$9f.L/1fyhBOq1XFaiMSTHuyvhbb8o09romnSaK0DODz7250hhfGi2','Operater','Edunova','oper');
 
 
-# inserti u tablice 23_11_2021
-
-# 1-4
-insert into zanr (sifra,naziv) values
-(null,'Heavy Metal'),
-(null,'Power Metal'),
-(null,'Thrash Metal'),
-(null,'Death Metal');
-
-# 1-4
-insert into izvodac (sifra,naziv,web) values
-(null,'Iron Maiden','https://www.ironmaiden.com/'),
-(null,'Judas Priest','https://www.judaspriest.com/'),
-(null,'Black Sabbath','https://www.blacksabbath.com/'),
-(null,'Motorhead','https://imotorhead.com/'),
-# 5-8
-(null,'Blind Guardian','https://www.blind-guardian.com/'),
-(null,'Helloween','https://www.helloween.org/'),
-(null,'Gamma Ray','https://www.gammaray.org/en/'),
-(null,'Manowar','https://manowar.com/'),
-# 9-12
-(null,'Metallica','https://www.metallica.com/'),
-(null,'Megadeth','https://megadeth.com/'),
-(null,'Slayer','https://www.slayer.net/'),
-(null,'Anthrax','https://www.anthrax.com/'),
-# 13-16
-(null,'Morbid Angel','http://www.morbidangel.com/'),
-(null,'Entombed','https://www.entombedad.com/'),
-(null,'Suffocation','https://www.suffocationofficial.com/'),
-(null,'Obituary','https://www.obituary.cc/');
-
-# inserti u tablice 27_11_2021
+# inserti u tablice 27_11_2021 (ispravljeno 22_02_2022)
 
 # inserti u tablicu proizvod
 
 insert into proizvod (sifra,zanr,izvodac,naziv,cijena,izdavackaKuca,zaliha) values
-(null,1,1,'Brave New World',149.99,'Metal Blade Records',100),
-(null,1,1,'Powerslave',149.99,'Metal Blade Records',100),
-(null,1,2,'Sad Wings Of Destiny',149.99,'Roadrunner Records',100),
-(null,1,2,'Brittish Steel',149.99,'Roadrunner Records',100),
-(null,1,3,'Black Sabbath',149.99,'Metal Blade Records',100),
-(null,1,3,'Heaven and Hell',149.99,'Metal Blade Records',100),
-(null,1,4,'Inferno',149.99,'Roadrunner Records',100),
-(null,1,4,'Bomber',149.99,'Roadrunner Records',100),
-(null,2,5,'Imaginations from the Other Side',149.99,'Metal Blade Records',100),
-(null,2,5,'Battalions of Fear',149.99,'Metal Blade Records',100),
-(null,2,6,'The Dark Ride',149.99,'Roadrunner Records',100),
-(null,2,6,'Better than Raw',149.99,'Roadrunner Records',100),
-(null,2,7,'Power Metal',149.99,'Nuclear Blast Records',100),
-(null,2,7,'No World Order',149.99,'Nuclear Blast Records',100),
-(null,2,8,'Gods of War',149.99,'Metal Blade Records',100),
-(null,2,8,'Battle Hymns',149.99,'Metal Blade Records',100),
-(null,3,9,'Kill ''em All',149.99,'Megaforce Records',100),
-(null,3,9,'Ride the Lightning',149.99,'Megaforce Records',100),
-(null,3,10,'Rust in Peace',149.99,'Roadrunner Records',100),
-(null,3,10,'Peace Sells... But Who''s Buying?',149.99,'Roadrunner Records',100),
-(null,3,11,'Seasons in the Abyss',149.99,'Nuclear Blast Records',100),
-(null,3,11,'Show no Mercy',149.99,'Nuclear Blast Records',100),
-(null,3,12,'Among the Living',149.99,'Metal Blade Records',100),
-(null,3,12,'Spreading the Disease',149.99,'Metal Blade Records',100),
-(null,4,13,'Blessed are the Sick',149.99,'Roadrunner Records',100),
-(null,4,13,'Formulas Fatal to the Flesh',149.99,'Roadrunner Records',100),
-(null,4,14,'Left Hand Path',149.99,'Nuclear Blast Records',100),
-(null,4,14,'Clandestine',149.99,'Nuclear Blast Records',100),
-(null,4,15,'As Grace Descends',149.99,'Megaforce Records',100),
-(null,4,15,'Suffocation',149.99,'Megaforce Records',100),
-(null,4,16,'The Erosion of Sanity',149.99,'Metal Blade Records',100),
-(null,4,16,'Cause of Death',149.99,'Metal Blade Records',100);
+(null,'Heavy Metal','Iron Maiden','Brave New World',129.99,'Metal Blade Records',100),
+(null,'Heavy Metal','Iron Maiden','Powerslave',149.99,'Metal Blade Records',100),
+(null,'Heavy Metal','Judas Priest','Sad Wings Of Destiny',189.99,'Roadrunner Records',100),
+(null,'Heavy Metal','Judas Priest','Brittish Steel',209.99,'Roadrunner Records',100),
+(null,'Heavy Metal','Black Sabbath','Black Sabbath',139.99,'Metal Blade Records',100),
+(null,'Heavy Metal','Black Sabbath','Heaven and Hell',159.99,'Metal Blade Records',100),
+(null,'Heavy Metal','Motorhead','Inferno',179.99,'Roadrunner Records',100),
+(null,'Heavy Metal','Motorhead','Bomber',149.99,'Roadrunner Records',100),
+(null,'Power Metal','Blind Guardian','Imaginations from the Other Side',129.99,'Metal Blade Records',100),
+(null,'Power Metal','Blind Guardian','Battalions of Fear',179.99,'Metal Blade Records',100),
+(null,'Power Metal','Helloween','The Dark Ride',119.99,'Roadrunner Records',100),
+(null,'Power Metal','Helloween','Better than Raw',139.99,'Roadrunner Records',100),
+(null,'Power Metal','Gamma Ray','Power Metal',179.99,'Nuclear Blast Records',100),
+(null,'Power Metal','Gamma Ray','No World Order',139.99,'Nuclear Blast Records',100),
+(null,'Power Metal','Manowar','Gods of War',209.99,'Metal Blade Records',100),
+(null,'Power Metal','Manowar','Battle Hymns',199.99,'Metal Blade Records',100),
+(null,'Thrash Metal','Metallica','Kill ''em All',189.99,'Megaforce Records',100),
+(null,'Thrash Metal','Metallica','Ride the Lightning',169.99,'Megaforce Records',100),
+(null,'Thrash Metal','Megadeth','Rust in Peace',159.99,'Roadrunner Records',100),
+(null,'Thrash Metal','Megadeth','Peace Sells... But Who''s Buying?',119.99,'Roadrunner Records',100),
+(null,'Thrash Metal','Slayer','Seasons in the Abyss',139.99,'Nuclear Blast Records',100),
+(null,'Thrash Metal','Slayer','Show no Mercy',129.99,'Nuclear Blast Records',100),
+(null,'Thrash Metal','Anthrax','Among the Living',159.99,'Metal Blade Records',100),
+(null,'Thrash Metal','Anthrax','Spreading the Disease',199.99,'Metal Blade Records',100),
+(null,'Death Metal','Morbid Angel','Blessed are the Sick',159.99,'Roadrunner Records',100),
+(null,'Death Metal','Morbid Angel','Formulas Fatal to the Flesh',149.99,'Roadrunner Records',100),
+(null,'Death Metal','Entombed','Left Hand Path',169.99,'Nuclear Blast Records',100),
+(null,'Death Metal','Entombed','Clandestine',139.99,'Nuclear Blast Records',100),
+(null,'Death Metal','Suffocation','As Grace Descends',149.99,'Megaforce Records',100),
+(null,'Death Metal','Suffocation','Suffocation',119.99,'Megaforce Records',100),
+(null,'Death Metal','Obituary','The Erosion of Sanity',129.99,'Metal Blade Records',100),
+(null,'Death Metal','Obituary','Cause of Death',139.99,'Metal Blade Records',100);
 
 # inserti u tablicu kupac
 

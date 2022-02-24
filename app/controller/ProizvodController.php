@@ -7,6 +7,9 @@ class ProizvodController extends AutorizacijaController
 
     public function index()
     {
-        $this->view->render($this->viewDir . 'index');
+        // print_r(Proizvod::read());
+        $this->view->render($this->viewDir . 'index',[
+            'proizvodi'=>Proizvod::read()
+        ]);
     }
 }

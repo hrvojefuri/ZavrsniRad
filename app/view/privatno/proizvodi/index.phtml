@@ -1,1 +1,22 @@
-Rad s proizvodima
+<table>
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Izvođač</th>
+            <th>Žanr</th>
+            <th>Cijena</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($proizvodi as $proizvod): ?>
+            <tr>
+                <td><?=$proizvod->naziv?></td>
+                <td><?=$proizvod->izvodac?></td>
+                <td><?=$proizvod->zanr?></td>
+                <td><?=$proizvod->cijena?></td>
+                <td></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

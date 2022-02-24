@@ -23,14 +23,6 @@ if($_SERVER['SERVER_ADDR']==='127.0.0.1'){
 return [
     'dev'=>true,
     'url'=>$url,
-    'naslovApp'=>$baza,
-    'baza'=>
+    'naslovApp'=>'FuriousVortex',
+    'baza'=>$baza
 ];
-
-/*
-return [
-    'dev'=>false,
-    'url'=>'https://www.polaznik31.edunova.hr/',
-    'naslovApp'=>'FuriousVortex'
-];
-*/

@@ -6,6 +6,9 @@ create database furiousvortex character set utf8mb4;
 
 use furiousvortex;
 
+# za server
+alter database bront_furiousvortex character set utf8mb4;
+
 create table operater (
     sifra       int not null primary key auto_increment,
     email       varchar(50) not null,

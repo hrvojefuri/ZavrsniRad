@@ -69,9 +69,9 @@ alter table kosarica add foreign key (proizvod) references proizvod(sifra);
 
 insert into operater(email,lozinka,ime,prezime,uloga) values
 # lozinka a
-('admin@edunova.hr','$2a$12$Q5OY9RlK.2P6P7ek37PJiO3oqJxwVpdBT2tDPvHFGm/F0j5Q5Erwu','Administrator','Edunova','admin'),
+('admin@furiousvortex.hr','$2a$12$Q5OY9RlK.2P6P7ek37PJiO3oqJxwVpdBT2tDPvHFGm/F0j5Q5Erwu','Hrvoje','Furi','admin'),
 # lozinka o
-('oper@edunova.hr','$2a$12$9f.L/1fyhBOq1XFaiMSTHuyvhbb8o09romnSaK0DODz7250hhfGi2','Operater','Edunova','oper');
+('oper@furiousvortex.hr','$2a$12$9f.L/1fyhBOq1XFaiMSTHuyvhbb8o09romnSaK0DODz7250hhfGi2','Operater','FuriousVortex','oper');
 
 
 # inserti u tablice 27_11_2021 (ispravljeno 22_02_2022)

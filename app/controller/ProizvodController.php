@@ -9,7 +9,8 @@ class ProizvodController extends AutorizacijaController
     {
         // print_r(Proizvod::read());
         $this->view->render($this->viewDir . 'index',[
-            'proizvodi'=>Proizvod::read()
+            'proizvodi'=>Proizvod::read(),
+            'css'=>'<link rel="stylesheet" href="' . App::config('url') . 'public/css/proizvodindex.css">'
         ]);
     }
 }

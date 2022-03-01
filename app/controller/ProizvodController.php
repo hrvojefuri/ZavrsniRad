@@ -28,6 +28,18 @@ class ProizvodController extends AutorizacijaController
         ]);
     }
 
+    public function novi()
+    {
+        $this->view->render($this->viewDir . 'novi');
+    }
+
+    public function dodajNovi()
+    {
+        // prostor za kontrole
+        Proizvod::create($_POST);
+        $this->index();
+    }
+
     public function brisanje($sifra)
     {
         Proizvod::delete($sifra);

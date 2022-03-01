@@ -1,0 +1,35 @@
+<form action="<?=App::config('url')?>proizvod/dodajNovi" method="post">
+
+    <fieldset>
+        <legend>Dodavanje novog proizvoda</legend>
+
+    <label for="zanr">Žanr</label>
+    <input type="text" name="zanr" id="zanr">
+
+    <label for="izvodac">Izvođač</label>
+    <input type="text" name="izvodac" id="izvodac">
+
+    <label for="naziv">Naziv</label>
+    <input type="text" name="naziv" id="naziv">
+
+    <label for="cijena">Cijena</label>
+    <input type="text" name="cijena" id="cijena">
+
+    <label for="izdavackaKuca">Izdavačka kuća</label>
+    <input type="text" name="izdavackaKuca" id="izdavackaKuca">
+
+    <label for="zaliha">Zaliha</label>
+    <input type="number" name="zaliha" id="zaliha" pattern="[0-9]{10}">
+
+    <div class="grid-x grid-padding-x">
+            <div class="large-4 cell">
+                <a  class="alert button expanded" href="<?=App::config('url')?>proizvod/index">Odustani</a>
+            </div>
+            <div class="large-8 cell">
+                <input type="submit" class="success button expanded" value="Dodaj novi">
+            </div>
+    </div>
+
+    </fieldset>
+
+</form>

@@ -43,7 +43,7 @@
                         class="fas fa-2x fa-edit"></i>
                 </a>
                 <?php if($proizvod->kosarica==0): ?>
-                    <a style="margin-left: 20px;" href="<?=APP::config('url')?>proizvod/brisanje/<?=$proizvod->sifra?>">
+                    <a onclick="return confirm('Sigurno obrisati <?=$proizvod->naziv?>?')" style="margin-left: 20px;" href="<?=APP::config('url')?>proizvod/brisanje/<?=$proizvod->sifra?>">
                         <i style="color: red;" title="Obriši &quot;<?=$proizvod->naziv?>&quot;" 
                             class="fas fa-2x fa-trash-alt"></i>
                     </a>

@@ -31,13 +31,24 @@ class App
         }else{
             $metoda = $dijelovi[2];
         }
+
+        $parametar = '';
+        if(!isset($dijelovi[3]) || $dijelovi[3]===''){
+            $parametar = null;
+        }else{
+            $parametar = $dijelovi[3];
+        }
         
         // echo $klasa . '->' . $metoda . '()';
 
         if(class_exists($klasa) && method_exists($klasa,$metoda)){
             // klasa i metoda postoje, instancirati klasu i pozvati metodu
             $instanca = new $klasa();
-            $instanca->$metoda();
+            if($parametar==null){
+                $instanca->$metoda();    
+            }else{
+                $instanca->$metoda($parametar);
+            }            
         }else{
             // metoda na klasi ne postoji, obavijestiti korisnika
             $view = new View();

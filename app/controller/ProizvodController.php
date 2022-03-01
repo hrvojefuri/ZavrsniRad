@@ -27,4 +27,10 @@ class ProizvodController extends AutorizacijaController
             'css'=>'<link rel="stylesheet" href="' . App::config('url') . 'public/css/proizvodindex.css">'
         ]);
     }
+
+    public function brisanje($sifra)
+    {
+        Proizvod::delete($sifra);
+        $this->index();
+    }
 }

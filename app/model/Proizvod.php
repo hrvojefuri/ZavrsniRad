@@ -28,4 +28,15 @@ class Proizvod
     // U - Update
 
     // D - Delete
+    public static function delete($sifra)
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('
+        
+        delete from proizvod where sifra=:sifra;
+        
+        ');
+        $izraz->execute(['sifra'=>$sifra]);
+        
+    }
 }

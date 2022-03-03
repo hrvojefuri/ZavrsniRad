@@ -7,11 +7,22 @@ class ProizvodController extends AutorizacijaController
 
     private $nf;
 
+    private $poruka;
+
+    private $proizvod;
+
     public function __construct()
     {
         parent::__construct();
         $this->nf=new \NumberFormatter("hr-HR", \NumberFormatter::DECIMAL);
         $this->nf->setPattern('#,##0.00 kn');
+        $this->proizvod=new stdClass();
+        $this->proizvod->zanr='';
+        $this->proizvod->izvodac='';
+        $this->proizvod->naziv='';
+        $this->proizvod->cijena='';
+        $this->proizvod->izdavackaKuca='';
+        $this->proizvod->zaliha='';
     }
 
     public function index()
@@ -30,14 +41,68 @@ class ProizvodController extends AutorizacijaController
 
     public function novi()
     {
-        $this->view->render($this->viewDir . 'novi');
+        $this->view->render($this->viewDir . 'novi',[
+            'poruka'=>'',
+            'proizvod'=>$this->proizvod
+        ]);
     }
 
     public function dodajNovi()
     {
         // prostor za kontrole
-        Proizvod::create($_POST);
-        $this->index();
+        $this->proizvod=(object)$_POST;
+
+        if($this->kontrolaNaziv()
+        && $this->kontrolaIzvodac()
+        && $this->kontrolaCijena()){
+            Proizvod::create($_POST);
+            $this->index();
+        }else{
+            $this->view->render($this->viewDir . 'novi',[
+                'poruka'=>$this->poruka,
+                'proizvod'=>$this->proizvod
+            ]);
+        }        
+    }
+
+    private function kontrolaNaziv()
+    {
+        if(strlen($this->proizvod->naziv)===0){
+            $this->poruka='Obavezan unos naziva';
+            return false;
+        }
+        if(strlen($this->proizvod->naziv)>50){
+            $this->poruka='Naziv ne smije biti duži od 50 znakova';
+            return false;
+        }        
+        return true;
+    }
+
+    private function kontrolaIzvodac()
+    {
+        if(strlen($this->proizvod->izvodac)===0){
+            $this->poruka='Obavezan unos izvođača';
+            return false;
+        }
+        if(strlen($this->proizvod->izvodac)>50){
+            $this->poruka='Naziv izvođača ne smije biti duži od 50 znakova';
+            return false;
+        }        
+        return true;
+    }
+    
+    private function kontrolaCijena()
+    {
+        if(strlen(trim($this->proizvod->cijena))>0){
+            $broj = (float) trim($this->proizvod->cijena);
+            if($broj<=0){
+                $this->poruka='Cijena mora biti decimalni broj veći od 0, unijeli ste: ' . $this->proizvod->cijena;
+                $this->proizvod->cijena='';
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public function brisanje($sifra)

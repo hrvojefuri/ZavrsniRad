@@ -4,22 +4,22 @@
         <legend>Dodavanje novog proizvoda</legend>
 
     <label for="zanr">Žanr</label>
-    <input type="text" name="zanr" id="zanr">
+    <input type="text" name="zanr" id="zanr" value="<?= $proizvod->zanr ?>">
 
     <label for="izvodac">Izvođač</label>
-    <input type="text" name="izvodac" id="izvodac">
+    <input type="text" name="izvodac" id="izvodac" value="<?= $proizvod->izvodac ?>">
 
     <label for="naziv">Naziv</label>
-    <input type="text" name="naziv" id="naziv">
+    <input type="text" name="naziv" id="naziv" value="<?= $proizvod->naziv ?>">
 
     <label for="cijena">Cijena</label>
-    <input type="text" name="cijena" id="cijena">
+    <input type="text" name="cijena" id="cijena" value="<?= $proizvod->cijena ?>">
 
     <label for="izdavackaKuca">Izdavačka kuća</label>
-    <input type="text" name="izdavackaKuca" id="izdavackaKuca">
+    <input type="text" name="izdavackaKuca" id="izdavackaKuca" value="<?= $proizvod->izdavackaKuca ?>">
 
     <label for="zaliha">Zaliha</label>
-    <input type="number" name="zaliha" id="zaliha" pattern="[0-9]{10}">
+    <input type="number" name="zaliha" id="zaliha" pattern="[0-9]{10}" value="<?= $proizvod->zaliha ?>">
 
     <div class="grid-x grid-padding-x">
             <div class="large-4 cell">
@@ -29,6 +29,8 @@
                 <input type="submit" class="success button expanded" value="Dodaj novi">
             </div>
     </div>
+
+    <?=$poruka?>
 
     </fieldset>
 

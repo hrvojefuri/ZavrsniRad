@@ -1,12 +1,27 @@
-<hr <?php
-if(App::config('dev')){
-    echo 'style="border: 5px solid red;"';
-}
+<div class="podnozje">
+    <hr <?php
+    if(App::config('dev')){
+        echo 'style="border: 5px solid red;"';
+    }
 
-?> />
-<?php
-if(App::config('dev')){
-    echo '<span style="color: blue">DEVELOPMENT</span>';
-}
+    ?> />
 
-echo App::config('naslovApp')?> &copy; 2022
+    <div class="podnozje-logo">
+    <?php
+        if(App::config('dev')){
+        echo '<span style="color: blue">DEVELOPMENT</span>';
+        }
+
+        echo App::config('naslovApp')?> &copy; 2022
+    </div>
+    <div class="podnozje-lista">
+        <ul>
+            <li><a class="podnozje-link" href="<?=App::config('url')?>">Početna</a></li>
+            <li><a class="podnozje-link" href="#">O nama</a></li>
+            <li><a class="podnozje-link" href="#">Kontakt</a></li>
+        </ul>
+    </div>
+    
+
+
+</div>

@@ -23,6 +23,6 @@ if($_SERVER['SERVER_ADDR']==='127.0.0.1'){
 return [
     'dev'=>true,
     'url'=>$url,
-    'naslovApp'=>'FuriousVortex',
+    'naslovApp'=>'<span class="logo1">Furious</span><span class="logo2">Vortex</span>',
     'baza'=>$baza
 ];

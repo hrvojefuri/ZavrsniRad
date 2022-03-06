@@ -1,4 +1,4 @@
-<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium" id="izbornik">
   <button class="menu-icon" type="button" data-toggle></button>
   <div class="title-bar-title"><?=App::config('naslovApp')?></div>
 </div>
@@ -7,7 +7,7 @@
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text"><?=App::config('naslovApp')?></li>
-      <li><a href="<?=App::config('url')?>">Početna</a></li>
+      <li><a href="<?=App::config('url')?>"><i class="fas fa-home" style="color: white"></i></a></li>
       <?php if(App::autoriziran()): ?>
         <li><a href="<?=App::config('url')?>nadzornaploca/index">Nadzorna ploča</a></li>
       <?php endif; ?>
@@ -27,9 +27,9 @@
     <ul class="menu">
       <li>
         <?php if(App::autoriziran()): ?>
-          <a href="<?=App::config('url')?>login/odjava">Odjava <?php echo $_SESSION['autoriziran']->ime ?></a>
+          <a class="prijava-dugme" href="<?=App::config('url')?>login/odjava">Odjava <?php echo $_SESSION['autoriziran']->ime ?></a>
         <?php else: ?>
-          <a href="<?=App::config('url')?>login/index">Prijava</a>
+          <a class="prijava-dugme" href="<?=App::config('url')?>login/index">Prijava</a>
         <?php endif; ?>
       </li>
     </ul>

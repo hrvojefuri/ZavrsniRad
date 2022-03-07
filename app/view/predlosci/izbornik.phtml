@@ -1,11 +1,11 @@
-<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium" id="izbornik">
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
   <button class="menu-icon" type="button" data-toggle></button>
   <div class="title-bar-title"><?=App::config('naslovApp')?></div>
 </div>
 
-<div class="top-bar" id="example-menu">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
+<div class="top-bar" id="example-menu" style="background-color: black">
+  <div class="top-bar-left" style="background-color: black">
+    <ul class="dropdown menu" data-dropdown-menu style="background-color: black">
       <li class="menu-text"><?=App::config('naslovApp')?></li>
       <li><a href="<?=App::config('url')?>"><i class="fas fa-home" style="color: white"></i></a></li>
       <?php if(App::autoriziran()): ?>
@@ -23,9 +23,9 @@
       <?php endif; ?>  
     </ul>
   </div>
-  <div class="top-bar-right">
+  <div class="top-bar-right" style="background-color: black">
     <ul class="menu">
-      <li>
+      <li style="background-color: black">
         <?php if(App::autoriziran()): ?>
           <a class="prijava-dugme" href="<?=App::config('url')?>login/odjava">Odjava <?php echo $_SESSION['autoriziran']->ime ?></a>
         <?php else: ?>

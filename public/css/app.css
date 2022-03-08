@@ -96,6 +96,12 @@ body{
 
 #izbornik{
     background-color: black;
+    color: white;
+}
+
+#podizbornik{
+    background-color: black;
+    color: white;
 }
 
 #pocetnagumb{

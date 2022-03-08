@@ -73,7 +73,8 @@ class ProizvodController extends AutorizacijaController
         && $this->kontrolaIzvodac()
         && $this->kontrolaCijena()){
             Proizvod::create((array)$this->proizvod);
-            $this->index();
+            // $this->index();
+            header('location:' . App::config('url') . 'proizvod/index');
         }else{
             $this->view->render($this->viewDir . 'novi',[
                 'poruka'=>$this->poruka,
@@ -90,13 +91,21 @@ class ProizvodController extends AutorizacijaController
         && $this->kontrolaIzvodac()
         && $this->kontrolaCijena()){
             Proizvod::update((array)$this->proizvod);
-            $this->index();
+            // $this->index();
+            header('location:' . App::config('url') . 'proizvod/index');
         }else{
             $this->view->render($this->viewDir . 'promjena',[
                 'poruka'=>$this->poruka,
                 'proizvod'=>$this->proizvod
             ]);
         }
+    }
+
+    public function brisanje($sifra)
+    {
+        Proizvod::delete($sifra);
+        // $this->index();
+        header('location:' . App::config('url') . 'proizvod/index');
     }
 
     private function pripremiPodatke()
@@ -150,11 +159,5 @@ class ProizvodController extends AutorizacijaController
         }
 
         return true;
-    }
-
-    public function brisanje($sifra)
-    {
-        Proizvod::delete($sifra);
-        $this->index();
-    }
+    }    
 }

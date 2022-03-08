@@ -1,7 +1,7 @@
-<form action="<?=App::config('url')?>proizvod/dodajNovi" method="post" id="program">
+<form action="<?=App::config('url')?>proizvod/promijeni" method="post" id="program">
 
     <fieldset>
-        <legend>Dodavanje novog proizvoda</legend>
+        <legend>Promjena postojećeg proizvoda</legend>
 
     <label for="zanr">Žanr</label>
     <input type="text" name="zanr" id="zanr" value="<?= $proizvod->zanr ?>">
@@ -21,12 +21,14 @@
     <label for="zaliha">Zaliha</label>
     <input type="number" name="zaliha" id="zaliha" pattern="[0-9]{10}" value="<?= $proizvod->zaliha ?>">
 
+    <input type="hidden" name="sifra" value="<?=$proizvod->sifra?>">
+
     <div class="grid-x grid-padding-x">
             <div class="large-4 cell">
                 <a  class="alert button expanded" href="<?=App::config('url')?>proizvod/index">Odustani</a>
             </div>
             <div class="large-8 cell">
-                <input type="submit" class="success button expanded" value="Dodaj novi">
+                <input type="submit" class="success button expanded" value="Promijeni">
             </div>
     </div>
 

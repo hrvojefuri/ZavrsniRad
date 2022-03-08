@@ -47,15 +47,32 @@ class ProizvodController extends AutorizacijaController
         ]);
     }
 
+    public function promjena($id)
+    {
+        $this->proizvod = Proizvod::readOne($id);
+
+        if($this->proizvod->cijena==0){
+            $this->proizvod->cijena='';
+        }else{
+            $this->proizvod->cijena=$this->nf->format($this->proizvod->cijena);
+        }
+
+        $this->view->render($this->viewDir . 'promjena',[
+            'poruka'=>'Promijenite podatke',
+            'proizvod'=>$this->proizvod
+        ]);
+
+    }
+
     public function dodajNovi()
     {
         // prostor za kontrole
-        $this->proizvod=(object)$_POST;
+        $this->pripremiPodatke();
 
         if($this->kontrolaNaziv()
         && $this->kontrolaIzvodac()
         && $this->kontrolaCijena()){
-            Proizvod::create($_POST);
+            Proizvod::create((array)$this->proizvod);
             $this->index();
         }else{
             $this->view->render($this->viewDir . 'novi',[
@@ -63,6 +80,28 @@ class ProizvodController extends AutorizacijaController
                 'proizvod'=>$this->proizvod
             ]);
         }        
+    }
+
+    public function promijeni()
+    {
+        $this->pripremiPodatke();        
+        
+        if($this->kontrolaNaziv()
+        && $this->kontrolaIzvodac()
+        && $this->kontrolaCijena()){
+            Proizvod::update((array)$this->proizvod);
+            $this->index();
+        }else{
+            $this->view->render($this->viewDir . 'promjena',[
+                'poruka'=>$this->poruka,
+                'proizvod'=>$this->proizvod
+            ]);
+        }
+    }
+
+    private function pripremiPodatke()
+    {
+        $this->proizvod=(object)$_POST;
     }
 
     private function kontrolaNaziv()
@@ -94,8 +133,16 @@ class ProizvodController extends AutorizacijaController
     private function kontrolaCijena()
     {
         if(strlen(trim($this->proizvod->cijena))>0){
-            $broj = (float) trim($this->proizvod->cijena);
-            if($broj<=0){
+
+            if(strpos($this->proizvod->cijena,'kn')>=0){
+                $this->proizvod->cijena = trim(str_replace('kn','',$this->proizvod->cijena));
+            }
+
+            $this->proizvod->cijena = str_replace('.','',$this->proizvod->cijena);
+
+            $this->proizvod->cijena = (float)str_replace(',','.',$this->proizvod->cijena);
+
+            if($this->proizvod->cijena<=0){
                 $this->poruka='Cijena mora biti decimalni broj veći od 0, unijeli ste: ' . $this->proizvod->cijena;
                 $this->proizvod->cijena='';
                 return false;

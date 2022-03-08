@@ -2,6 +2,19 @@
 
 class Proizvod
 {
+
+    public static function readOne($kljuc)
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('
+        
+        select * from proizvod where sifra=:parametar;
+        
+        ');
+        $izraz->execute(['parametar'=>$kljuc]);
+        return $izraz->fetch();
+    }
+
     // CRUD
 
     // R - Read
@@ -37,6 +50,24 @@ class Proizvod
     
 
     // U - Update
+
+    public static function update($parametri)
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('
+        
+        update proizvod set 
+            zanr=:zanr,
+            izvodac=:izvodac,
+            naziv=:naziv,
+            cijena=:cijena,
+            izdavackaKuca=:izdavackaKuca,
+            zaliha=:zaliha
+            where sifra=:sifra;
+        
+        ');
+        $izraz->execute($parametri);
+    }
 
     // D - Delete
     public static function delete($sifra)

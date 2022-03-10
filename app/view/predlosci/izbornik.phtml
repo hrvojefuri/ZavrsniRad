@@ -6,18 +6,18 @@
 <div class="top-bar" id="example-menu" style="background-color: black">
   <div class="top-bar-left" style="background-color: black">
     <ul class="dropdown menu" data-dropdown-menu style="background-color: black">
-      <li class="menu-text"><?=App::config('naslovApp')?></li>
+      <li class="menu-text"><p><span class="logo1">Furious</span><span class="logo2">Vortex</span></p></li>
       <li><a href="<?=App::config('url')?>"><i class="fas fa-home" style="color: white"></i></a></li>
       <?php if(App::autoriziran()): ?>
-        <li><a href="<?=App::config('url')?>nadzornaploca/index">Nadzorna ploča</a></li>
+        <li><a href="<?=App::config('url')?>nadzornaploca/index" style="color:white">Nadzorna ploča</a></li>
       <?php endif; ?>
       <?php if(App::autoriziran()): ?>
-        <li><a href="#">Programi</a>
-          <ul class="submenu menu vertical" data-submenu id="podizbornik">
-            <li><a href="<?=App::config('url')?>kupac/index">Kupac</a></li>
-            <li><a href="<?=App::config('url')?>proizvod/index">Proizvod</a></li>
-            <li><a href="<?=App::config('url')?>narudzba/index">Narudžba</a></li>
-            <li><a href="<?=App::config('url')?>kosarica/index">Košarica</a></li>
+        <li><a href="#" style="color:white">Programi</a>
+          <ul class="submenu menu vertical" data-submenu style="background-color: black">
+            <li><a href="<?=App::config('url')?>kupac/index" style="color:white">Kupac</a></li>
+            <li><a href="<?=App::config('url')?>proizvod/index" style="color:white">Proizvod</a></li>
+            <li><a href="<?=App::config('url')?>narudzba/index" style="color:white">Narudžba</a></li>
+            <li><a href="<?=App::config('url')?>kosarica/index" style="color:white">Košarica</a></li>
           </ul>
         </li>
       <?php endif; ?>  

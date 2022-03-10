@@ -4,6 +4,8 @@
 body{
     font-family: Hubballi;
     font-size: 1.1em;
+    margin: 0;
+    padding: 0;
 }
 
 .grid-container{
@@ -16,12 +18,10 @@ body{
 .podnozje{
     background-color: black;
     color: white;
-    padding: 1em;
     height: 150px;
-    position: fixed;
+    position: relative;
     bottom: 0px;
     width: 100%;
-    margin-bottom: 0;
 }
 
 .logo1{
@@ -112,7 +112,7 @@ body{
 }
 
 #program{
-    min-height: 700px;
+    min-height: 610px;
 }
 
 hr{
@@ -127,5 +127,4 @@ hr{
     max-width: 400px;
     margin: auto;
   }
-  
   

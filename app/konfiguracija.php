@@ -21,7 +21,7 @@ if($_SERVER['SERVER_ADDR']==='127.0.0.1'){
 }
 
 return [
-    'dev'=>true,
+    'dev'=>$dev,
     'url'=>$url,
     'naslovApp'=>'FuriousVortex',
     'baza'=>$baza

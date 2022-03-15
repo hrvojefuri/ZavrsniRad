@@ -33,6 +33,7 @@ class NarudzbaController extends AutorizacijaController
                
              case 'promijeni':
                 Narudzba::update([
+                'sifra'=>6,
                 'ime'=>'Tamara',
                 'prezime'=>'Šolaja',
                 'ulica'=>'Drinska ulica',
@@ -50,7 +51,7 @@ class NarudzbaController extends AutorizacijaController
                 break;
 
             case 'obrisi':
-                Narudzba::delete(4);
+                Narudzba::delete(6);
         }
     }
 }

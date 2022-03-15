@@ -63,6 +63,13 @@ body{
     border-radius: 10px;
 }
 
+.pozdrav{
+    border: none;
+    margin: auto;
+    width: 100%;
+    font-family: Hubballi;
+}
+
 #bass{
     height: 500px;
     width: 200px;
@@ -88,13 +95,6 @@ body{
 #pocetna{
     min-height: 500px;
     border: none;
-}
-
-#pozdrav{
-    border: none;
-    margin: auto;
-    width: 100%;
-    font-family: Hubballi;
 }
 
 #izbornik{
@@ -134,5 +134,13 @@ hr{
     border: 2.5px solid rgb(40, 221, 40);
     border-radius: 10px;
     background-color: black;
+}
+
+#error404{
+    height: 150px;
+    width: 150px;
+    border: none;
+    margin: auto;
+    width: 100%;
 }
   

@@ -1,17 +1,11 @@
 <?php if(App::config('dev')):?>
-<h1>Tražili ste <?=$onoceganema?></h1>
-<ul>
-    <li>
-        Možda je potrebno kreirati kontroler klasu pa u njoj metodu
-    </li>
-    <li>
-        Možda je krivi naziv kontroler klase ili metode
-    </li>
-    <li>
-        Možda je kriva ruta generalno
-    </li>
-</ul>
-<?php else:?>
-    <h1>Ono što ste tražili ne postoji</h1>
-    <a href="<?=App::config('url')?>">Početna stranica</a>
+    
+    <div class="grid-x grid-padding-x" style="margin-top: 150px;">                   
+        <img src="<?=App::config('url')?>public/img/error404.svg" id="error404">
+    </div>
+
+    <div class="grid-x grid-padding-x" style="text-align: center">
+        <h1 class="pozdrav">Ups, malo si se prebrijao :) <br/> Primiri se i kreni <a href="<?=App::config('url')?>">ispočetka</a></h1>
+    </div>
+    
 <?php endif;?>

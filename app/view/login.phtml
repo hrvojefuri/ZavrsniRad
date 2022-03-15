@@ -1,17 +1,17 @@
 <form class="log-in-form" action="<?=App::config('url')?>login/autoriziraj" method="POST">
-  <h4 class="text-center">Autorizacija</h4>
-  <label>Email
-    <input type="email" name="email" placeholder="furiousvortex@gmail.com" value="<?=$email?>">
+  <h4 class="text-center" style="color:white">Prijava</h4>
+  <label style="color:white">Email
+    <input type="email" name="email" placeholder="furiousvortex@furiousvortex.hr" value="<?=$email?>">
   </label>
-  <label>Lozinka
+  <label style="color:white">Lozinka
     <input type="password" name="lozinka">
   </label>
   <p>
-    <input type="submit" class="button expanded" value="Prijava"></input>
+    <input type="submit" class="button expanded" value="Prijavi se" id="prijava-dugme"></input>
   </p>
-  <?=$poruka?>
-  <p style="margin-bottom: 0">Email: admin@furiousvortex.hr</p>
-  <p>Lozinka: a</p>
+  <span style="color:white"><?=$poruka?></span>
+  <p style="margin-bottom: 0; color:white">Email: admin@furiousvortex.hr</p>
+  <p style="color:white">Lozinka: a</p>
 </form>
 
 

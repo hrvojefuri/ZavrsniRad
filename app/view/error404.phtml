@@ -1,11 +1,15 @@
-<?php if(App::config('dev')):?>
+<?php if(!App::config('dev')):?>
     
     <div class="grid-x grid-padding-x" style="margin-top: 150px;">                   
         <img src="<?=App::config('url')?>public/img/error404.svg" id="error404">
     </div>
 
     <div class="grid-x grid-padding-x" style="text-align: center">
-        <h1 class="pozdrav">Ups, malo si se prebrijao :) <br/> Primiri se i kreni <a href="<?=App::config('url')?>">ispočetka</a></h1>
+        <h1 class="pozdrav">Ups, izgleda da nema onog što tražiš... <br/> Ne gubi glavu kao majstor na slici iznad, saberi se i kreni
+        <a href="<?=App::config('url')?>">ispočetka</a> :)</h1>
     </div>
+<?php else: ?>
+
+    Ne postoji <?=$onoceganema?>
     
 <?php endif;?>

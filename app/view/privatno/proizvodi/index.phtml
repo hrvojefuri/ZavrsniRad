@@ -1,58 +1,40 @@
-<div class="grid-x">
-    <div class="cell large-6">
-        <h1 style="font-size: 1.5rem;">Proizvodi</h1>
-    </div>
-    <div class="cell large-6" style="text-align: right;">
-        <a href="<?=APP::config('url')?>proizvod/novi">
-            <i style="color: green;" title="Dodaj novi proizvod" 
-                class="fas fa-2x fa-cart-plus"></i>
-        </a>
-    </div>
-</div>
+<div class="grid-x grid-padding-x">
+    <?php include 'dodajNovi.phtml'; ?>
+    <?php foreach($proizvodi as $proizvod): ?>
+        <div class="large-3 medium-4 cell">
+            <div class="callout" id="proizvod">
 
-<table>
-    <thead>
-        <tr>
-            <th>Naziv</th>
-            <th>Izvođač</th>
-            <th>Žanr</th>
-            <th>Cijena</th>
-            <th>Dostupno</th>
-            <th>Akcija</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($proizvodi as $proizvod): ?>
-            <tr>
-                <td><?=$proizvod->naziv?></td>
-                <td><?=$proizvod->izvodac?></td>
-                <td><?=$proizvod->zanr?></td>
-                <td><?=$proizvod->cijena?></td>
-                <td>
-                    <?php if($proizvod->zaliha>0): ?>
-                        <i style="color: green; " 
-                            class="fas fa-2x fa-check-circle"></i>
-                    <?php else: ?>
-                        <i style="color: gray;" 
-                            class="fas fa-2x fa-badge-check"></i>
-                    <?php endif; ?>
-                </td>
-                <td>
-                <a href="<?=APP::config('url')?>proizvod/promjena/<?=$proizvod->sifra?>">
-                    <i title="Promijeni &quot;<?=$proizvod->naziv?>&quot;" 
-                        class="fas fa-2x fa-edit"></i>
+                <h2 style="font-size: 2rem; font-family: Hubballi;">
+                    <?=$proizvod->naziv;?>
+                </h2>
+                
+                <img src="<?=App::config('url')?>public/img/proizvodi/<?=$proizvod->sifra . '.webp'?>" class="proizvod-slika">
+                
+                <h3 style="font-size: 1.5rem; font-family: Hubballi;">
+                    <?=$proizvod->izvodac;?>
+                </h3>
+
+                <h4 style="font-size: 1rem; font-family: Hubballi;">
+                    <?=$proizvod->cijena;?>
+                </h4>
+
+                <a href="<?=App::config('url')?>proizvod/promjena/<?=$proizvod->sifra?>">
+                    <i title="Promijeni" 
+                        class="fas fa-edit"></i>
                 </a>
+
                 <?php if($proizvod->kosarica==0): ?>
-                    <a onclick="return confirm('Sigurno obrisati <?=$proizvod->naziv?>?')" style="margin-left: 20px;" href="<?=APP::config('url')?>proizvod/brisanje/<?=$proizvod->sifra?>">
-                        <i style="color: red;" title="Obriši &quot;<?=$proizvod->naziv?>&quot;" 
-                            class="fas fa-2x fa-trash-alt"></i>
+                    <a onclick="return confirm('Sigurno obrisati?')" style="margin-left: 20px;" href="<?=App::config('url')?>proizvod/brisanje/<?=$proizvod->sifra?>">
+                        <i style="color: red;" title="Obriši" 
+                            class="fas fa-trash-alt"></i>
                     </a>
                 <?php else: ?>
-                    <i style="margin-left: 20px; color: gray;" title="Nije moguće brisanje &quot;<?=$proizvod->naziv?>&quot; jer se nalazi u aktivnoj košarici" 
-                            class="fas fa-2x fa-trash-alt"></i>
-                <?php endif; ?>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+                    <i style="margin-left: 20px; color: gray;" title="Nije moguće brisanje jer se nalazi u aktivnoj košarici" 
+                            class="fas fa-trash-alt"></i>
+                <?php endif; ?>          
+            </div>        
+        </div>
+    <?php endforeach; ?>
+
+    <?php include 'dodajNovi.phtml'; ?>
+</div>

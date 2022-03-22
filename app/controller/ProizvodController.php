@@ -69,9 +69,10 @@ class ProizvodController extends AutorizacijaController
         // prostor za kontrole
         $this->pripremiPodatke();
 
-        if($this->kontrolaNaziv()
-        && $this->kontrolaIzvodac()
-        && $this->kontrolaCijena()){
+        if($this->kontrolaIzvodac()
+        && $this->kontrolaNaziv()
+        && $this->kontrolaCijena()
+        && $this->kontrolaZaliha()){
             Proizvod::create((array)$this->proizvod);
             // $this->index();
             header('location:' . App::config('url') . 'proizvod/index');
@@ -87,9 +88,10 @@ class ProizvodController extends AutorizacijaController
     {
         $this->pripremiPodatke();        
         
-        if($this->kontrolaNaziv()
-        && $this->kontrolaIzvodac()
-        && $this->kontrolaCijena()){
+        if($this->kontrolaIzvodac()
+        && $this->kontrolaNaziv()
+        && $this->kontrolaCijena()
+        && $this->kontrolaZaliha()){
             Proizvod::update((array)$this->proizvod);
             // $this->index();
             header('location:' . App::config('url') . 'proizvod/index');
@@ -113,19 +115,6 @@ class ProizvodController extends AutorizacijaController
         $this->proizvod=(object)$_POST;
     }
 
-    private function kontrolaNaziv()
-    {
-        if(strlen($this->proizvod->naziv)===0){
-            $this->poruka='Obavezan unos naziva';
-            return false;
-        }
-        if(strlen($this->proizvod->naziv)>50){
-            $this->poruka='Naziv ne smije biti duži od 50 znakova';
-            return false;
-        }        
-        return true;
-    }
-
     private function kontrolaIzvodac()
     {
         if(strlen($this->proizvod->izvodac)===0){
@@ -138,6 +127,19 @@ class ProizvodController extends AutorizacijaController
         }        
         return true;
     }
+
+    private function kontrolaNaziv()
+    {
+        if(strlen($this->proizvod->naziv)===0){
+            $this->poruka='Obavezan unos naziva';
+            return false;
+        }
+        if(strlen($this->proizvod->naziv)>50){
+            $this->poruka='Naziv ne smije biti duži od 50 znakova';
+            return false;
+        }        
+        return true;
+    }    
     
     private function kontrolaCijena()
     {
@@ -159,5 +161,22 @@ class ProizvodController extends AutorizacijaController
         }
 
         return true;
-    }    
+    }
+    
+    private function kontrolaZaliha()
+    {
+        if(strlen(trim($this->proizvod->zaliha))===0){
+            $this->poruka='Obavezan unos zalihe';
+            return false;
+        }
+
+        $broj = (int) trim($this->proizvod->zaliha);
+        if($broj<=0){
+            $this->poruka='Zaliha mora biti cijeli broj veći od 0, a unijeli ste: ' . $this->proizvod->zaliha;
+            $this->smjer->trajanje='';
+            return false;
+        }
+
+        return true;
+    }
 }

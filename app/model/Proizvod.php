@@ -28,7 +28,7 @@ class Proizvod
         from proizvod a left join kosarica b
         on a.sifra=b.proizvod
         group by a.sifra, a.zanr, a.izvodac, a.naziv, a.cijena, a.izdavackaKuca, a.zaliha
-        order by 3;
+        order by 3, 4;
         
         ');
         $izraz->execute();

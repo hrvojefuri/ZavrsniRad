@@ -7,7 +7,7 @@ create database furiousvortex character set utf8mb4;
 use furiousvortex;
 
 # za server
-alter database bront_furiousvortex character set utf8mb4;
+# alter database bront_furiousvortex character set utf8mb4;
 
 create table operater (
     sifra       int not null primary key auto_increment,
@@ -26,7 +26,8 @@ create table kupac (
     kucniBroj       varchar(5) not null,
     grad            varchar(50) not null,
     postanskiBroj   char(5) not null,
-    email           varchar(50)
+    email           varchar(50) not null,
+    lozinka         char(60) not null
 );
 
 create table narudzba (
@@ -50,11 +51,11 @@ create table kosarica (
 
 create table proizvod (
     sifra           int not null primary key auto_increment,
-    zanr            varchar(50) not null,
+    zanr            varchar(50),
     izvodac         varchar(50) not null,
     naziv           varchar(50) not null,
     cijena          decimal(18,2) not null,
-    izdavackaKuca   varchar(50) not null,
+    izdavackaKuca   varchar(50),
     zaliha          int not null
 );
 
@@ -69,9 +70,9 @@ alter table kosarica add foreign key (proizvod) references proizvod(sifra);
 
 insert into operater(email,lozinka,ime,prezime,uloga) values
 # lozinka a
-('admin@furiousvortex.hr','$2a$12$Q5OY9RlK.2P6P7ek37PJiO3oqJxwVpdBT2tDPvHFGm/F0j5Q5Erwu','Hrvoje','Furi','admin'),
+('admin@furiousvortex.xyz','$2a$12$Q5OY9RlK.2P6P7ek37PJiO3oqJxwVpdBT2tDPvHFGm/F0j5Q5Erwu','Hrvoje','Furi','admin'),
 # lozinka o
-('oper@furiousvortex.hr','$2a$12$9f.L/1fyhBOq1XFaiMSTHuyvhbb8o09romnSaK0DODz7250hhfGi2','Operater','FuriousVortex','oper');
+('oper@furiousvortex.xyz','$2a$12$9f.L/1fyhBOq1XFaiMSTHuyvhbb8o09romnSaK0DODz7250hhfGi2','Operater','FuriousVortex','oper');
 
 
 # inserti u tablice 27_11_2021 (ispravljeno 22_02_2022)
@@ -113,11 +114,12 @@ insert into proizvod (sifra,zanr,izvodac,naziv,cijena,izdavackaKuca,zaliha) valu
 (null,'Death Metal','Obituary','Cause of Death',139.99,'Metal Blade Records',100);
 
 # inserti u tablicu kupac
+# lozinke kupaca su jednake sifri
 
-insert into kupac (sifra,ime,prezime,ulica,kucniBroj,grad,postanskiBroj,email) values
-(null,'Dinko','Dinčević','Osječka ulica','6','Dubrovnik','40000','dinko.dincevic@gmail.com'),
-(null,'Marija','Maras','Zagrebačka ulica','24','Osijek','31000','marija.maras@gmail.com'),
-(null,'Ivan','Ivčević','Dubrovačka ulica','139','Zagreb','10000','ivan.ivcevic@gmail.com');
+insert into kupac (sifra,ime,prezime,ulica,kucniBroj,grad,postanskiBroj,email,lozinka) values
+(null,'Dinko','Dinčević','Osječka ulica','6','Dubrovnik','40000','dinko.dincevic@gmail.com','$2a$12$qo2Ac0Big7zgvPzQzli5QuE.oPEDzAnwVcBXzZEy.9LcskhWIkkW6'),
+(null,'Marija','Maras','Zagrebačka ulica','24','Osijek','31000','marija.maras@gmail.com','$2a$12$9Q4xFJ0w3IKII0SoWiXg0O/j5faZYCK.8wEoMO5R3sl8XpX5RA..C'),
+(null,'Ivan','Ivčević','Dubrovačka ulica','139','Zagreb','10000','ivan.ivcevic@gmail.com','$2a$12$1DaDwsAZJXOIPNfGNMh72ONNnl.2DtqLuKgtpIgEevdz.nO1urzGO');
 
 # inserti u tablicu narudzba
 

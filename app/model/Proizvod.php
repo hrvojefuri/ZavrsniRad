@@ -30,7 +30,7 @@ class Proizvod
         count(b.sifra) as kosarica
         from proizvod a left join kosarica b
         on a.sifra=b.proizvod
-        where concat(a.naziv, \' \', a.izvodac, \' \') like : uvjet
+        where concat(a.naziv, \' \', a.izvodac, \' \') like :uvjet
         group by a.sifra, a.zanr, a.izvodac, a.naziv, a.cijena, a.izdavackaKuca, a.zaliha
         order by 3, 4
         limit :od, :rps

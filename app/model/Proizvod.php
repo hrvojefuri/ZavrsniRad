@@ -18,8 +18,11 @@ class Proizvod
     // CRUD
 
     // R - Read
-    public static function read()
+    public static function read($stranica, $uvjet)
     {
+        $rps = App::config('rps');
+        $od = $stranica * $rps - $rps;
+
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
         
@@ -27,10 +30,16 @@ class Proizvod
         count(b.sifra) as kosarica
         from proizvod a left join kosarica b
         on a.sifra=b.proizvod
+        where concat(a.naziv, \' \', a.izvodac, \' \') like : uvjet
         group by a.sifra, a.zanr, a.izvodac, a.naziv, a.cijena, a.izdavackaKuca, a.zaliha
-        order by 3, 4;
+        order by 3, 4
+        limit :od, :rps
         
         ');
+        $uvjet = '%' . $uvjet . '%';
+        $izraz->bindValue('od',$od,PDO::PARAM_INT);
+        $izraz->bindValue('rps',$rps,PDO::PARAM_INT);
+        $izraz->bindParam('uvjet',$uvjet);
         $izraz->execute();
         return $izraz->fetchAll();
     }

@@ -27,7 +27,22 @@ class ProizvodController extends AutorizacijaController
 
     public function index()
     {
-        $proizvodi = Proizvod::read();
+        if(!isset($_GET['stranica'])){
+            $stranica=1;
+        }else{
+            $stranica=(int)$_GET['stranica'];
+        }
+        if($stranica==0){
+            $stranica=1;
+        }
+
+        if(!isset($_GET['uvjet'])){
+            $uvjet='';
+        }else{
+            $uvjet=$_GET['uvjet'];
+        }
+
+        $proizvodi = Proizvod::read($stranica,$uvjet);
 
         foreach($proizvodi as $proizvod){
             $proizvod->cijena=$this->nf->format($proizvod->cijena);            

@@ -1,3 +1,7 @@
+<form action="<?=App::config('url')?>proizvod/index" method="get" class="forma-unos" style="margin-bottom: 25px;">
+    <input type="text" name="uvjet" placeholder="Unesite dio naziva proizvoda ili izvođača" style="margin-top: 10px; border-radius: 50px;">
+</form>
+
 <div class="grid-x grid-padding-x">
     <?php include 'dodajNovi.phtml'; ?>
     <?php foreach($proizvodi as $proizvod): ?>
